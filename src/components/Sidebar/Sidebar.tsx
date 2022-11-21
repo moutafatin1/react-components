@@ -23,13 +23,13 @@ export function Sidebar() {
 
   return (
     <>
-      <button onClick={openModal} className="ml-64">
+      <button onClick={openModal} className="fixed right-0 ml-64">
         Open/Close
       </button>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-10 flex"
+          className="fixed inset-0 z-10 flex md:hidden"
           onClose={closeModal}
         >
           <TransitionOpacity>
@@ -67,6 +67,28 @@ export function Sidebar() {
           </TransitionOpacity>
         </Dialog>
       </Transition>
+      {/* Static sidebar */}
+      <div className="inset-y-0 hidden w-full max-w-xs  flex-1 flex-col bg-gray-800 pt-5  md:fixed md:flex">
+        {/* Logo */}
+        <div className="px-4">
+          <h1 className="text-3xl font-bold text-white">Expense App</h1>
+        </div>
+
+        {/* Nav */}
+        <div className="mt-5 h-0 flex-1 overflow-y-auto">
+          <nav className="mt-5 flex flex-col space-y-2 px-2">
+            <Sidebar.NavItem icon={<AiFillHome />} isActive={true}>
+              Home
+            </Sidebar.NavItem>
+            <Sidebar.NavItem icon={<AiFillDollarCircle />}>
+              Expenses
+            </Sidebar.NavItem>
+            <Sidebar.NavItem icon={<AiFillSetting />}>Settings</Sidebar.NavItem>
+            <Sidebar.NavItem icon={<AiFillPieChart />}>Charts</Sidebar.NavItem>
+          </nav>
+        </div>
+        <Sidebar.Footer />
+      </div>
     </>
   );
 }

@@ -38,7 +38,7 @@ export function Sidebar() {
           <TransitionOpacity>
             <Dialog.Panel
               as="aside"
-              className="relative flex w-full max-w-xs flex-1 flex-col  bg-gray-800 py-5"
+              className="relative flex w-full max-w-xs flex-1 flex-col  bg-gray-800 pt-5"
             >
               {/* Logo */}
               <div className="px-4">
@@ -62,6 +62,7 @@ export function Sidebar() {
                   </Sidebar.NavItem>
                 </nav>
               </div>
+              <Sidebar.Footer />
             </Dialog.Panel>
           </TransitionOpacity>
         </Dialog>
@@ -93,5 +94,21 @@ Sidebar.NavItem = ({ children, icon, isActive = false }: NavItemProps) => {
       </span>
       <span>{children}</span>
     </a>
+  );
+};
+
+Sidebar.Footer = () => {
+  return (
+    <div className="flex items-center gap-2 bg-gray-700 p-4">
+      <img
+        className="h-14 w-14 rounded-full"
+        src="https://www.w3schools.com/howto/img_avatar.png"
+        alt="avatar"
+      />
+      <div className="flex flex-col">
+        <span className="font-medium text-white">Oussama Moutafatin</span>
+        <span className="text-gray-300">View Profile</span>
+      </div>
+    </div>
   );
 };
